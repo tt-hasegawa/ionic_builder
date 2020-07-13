@@ -12,10 +12,10 @@ RUN npm i -g --unsafe-perm cordova@${CORDOVA_VERSION}
 
 RUN apt-get update && apt-get install -y git bzip2 openssh-client && \
     npm i -g --unsafe-perm ionic@${IONIC_VERSION} && \
-    npm install -g cordova && \
+    npm install -g cordova@${CORDOVA_VERSION} && \
     npm install -g cordova-ios && \
     npm install -g firebase && \
-    npm install -g grpc@latest && \
+    npm install -g grpc@1.18.0 && \
     npm install -g cordova-res --unsafe-perm && \
     ionic --no-interactive config set -g daemon.updates false && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
