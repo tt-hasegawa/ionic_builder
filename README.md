@@ -1,9 +1,9 @@
 # ionic_builder
 Docker Container for Build Ionic Projects
 
-* CORDOVA_VERSION 9.0.0
+* CORDOVA_VERSION 10.0.0
 * IONIC_VERSION 4.12.0
-* Node.js v10.16.0
+* Node.js v10.13.0
 
 Ionicアプリをビルドする際に、Beevelop/Ionicコンテナイメージとして利用することが多いと思います。
 
