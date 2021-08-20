@@ -1,20 +1,6 @@
-FROM beevelop/android-nodejs:v10.15.1
+FROM beevelop/ionic:latest
 
-MAINTAINER Maik Hummel <m@ikhummel.com>
-
-ENV CORDOVA_VERSION 9.0.0
-ENV IONIC_VERSION 4.12.0
-
-WORKDIR "/tmp"
-
-RUN npm i -g --unsafe-perm cordova@${CORDOVA_VERSION}
-
-
-RUN apt-get update && apt-get install -y git bzip2 openssh-client && \
-    npm i -g --unsafe-perm ionic@${IONIC_VERSION} && \
-    npm install -g cordova@${CORDOVA_VERSION} && \
-    npm install -g cordova-ios && \
-    npm install -g firebase && \
-    npm install -g cordova-res --unsafe-perm && \
-    ionic --no-interactive config set -g daemon.updates false && \
-    rm -rf /var/lib/apt/lists/* && apt-get clean
+ENV NODEJS_VERSION=10.13.0 PATH=/opt/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/android/tools:/opt/android/platform-tools:/opt/android/build-tools/30.0.3:/usr/share/ant/bin:/usr/share/maven/bin:/usr/share/gradle/bin
+WORKDIR /opt/node
+RUN apt-get update && apt-get install -y curl git ca-certificates --no-install-recommends &&     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 &&     rm -rf /var/lib/apt/lists/* &&     apt-get clean
+WORKDIR /tmp
